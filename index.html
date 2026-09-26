@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Sisipho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#160B1E;
+    --night-2:#1D1024;
+    --black:#0C0710;
+    --pink:#FF6FA0;
+    --pink-soft:#FFC1DC;
+    --lilac:#B79CDB;
+    --ink:#F3E9F3;
+    --ink-dim:#C9B9CC;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--night);
+    color:var(--ink);
+    font-family:'Work Sans',system-ui,sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,.serif{font-family:'Cormorant Garamond',Georgia,serif;}
+  .title-font{font-family:'Cinzel',Georgia,serif; letter-spacing:0.04em;}
+  section{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:6rem 1.5rem;
+    position:relative;
+    text-align:center;
+  }
+  #timeline{background:var(--black);}
+  #humanity{background:var(--night-2);}
+  #question{background:var(--black);}
+  .hero h1{font-size:clamp(2.6rem,10vw,4.2rem); font-weight:700; margin:0 0 0.6rem; color:var(--pink-soft);}
+  .hero p{font-size:1.05rem; color:var(--ink-dim); max-width:26rem; line-height:1.6; margin:0;}
+  .arrow{margin-top:3rem; font-size:1.5rem; color:var(--lilac); animation:bob 2.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  .rail{
+    position:relative;
+    width:100%;
+    max-width:32rem;
+    margin:0 auto;
+    text-align:left;
+  }
+  .rail::before{
+    content:"";
+    position:absolute;
+    left:0.4rem;
+    top:0.4rem;
+    bottom:0.4rem;
+    width:1px;
+    background:var(--pink);
+    opacity:0.35;
+  }
+  .moment{
+    position:relative;
+    padding-left:2rem;
+    margin-bottom:2.6rem;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .moment.show{opacity:1; transform:translateY(0);}
+  .moment::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0.45rem;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--pink);
+    box-shadow:0 0 10px 2px rgba(255,111,160,0.55);
+  }
+  .moment h3{margin:0 0 0.3rem; font-size:1.3rem; font-weight:600; color:var(--pink-soft);}
+  .moment p{margin:0; color:var(--ink-dim); font-size:0.98rem; line-height:1.55;}
+
+  .switch-line{max-width:30rem; font-size:1.3rem; line-height:1.65; color:var(--ink);}
+  .switch-line em{color:var(--pink); font-style:normal;}
+
+  .mascot{width:180px; height:220px; margin-bottom:1.5rem;}
+
+  #question h2{font-size:clamp(2rem,7vw,2.8rem); color:var(--pink-soft); margin:0 0 2.2rem;}
+  .choices{display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; position:relative;}
+  #btn-no{transition:transform 0.25s ease;}
+  button.choice{
+    font-family:'Work Sans',sans-serif;
+    font-size:1rem;
+    padding:0.9rem 2rem;
+    border-radius:999px;
+    border:1px solid var(--pink);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    transition:background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+  }
+  button.choice:focus-visible{outline:2px solid var(--pink-soft); outline-offset:3px;}
+  button.choice.yes{background:var(--pink); color:var(--night); font-weight:600;}
+  button.choice:active{transform:scale(0.97);}
+  .result{max-width:24rem; font-size:1.15rem; line-height:1.6; color:var(--ink-dim);}
+  .footer-note{position:absolute; bottom:1.2rem; font-size:0.75rem; color:rgba(201,185,204,0.4);}
+
+  @media (prefers-reduced-motion: reduce){
+    .moment{transition:none;}
+    .arrow{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1 class="title-font">Sisipho</h1>
+  <p>The girl I call Dorothy on a good day &mdash; and who calls me "Unc" right back, in retaliation. Fair's fair.</p>
+  <div class="arrow">&#8595;</div>
+</section>
+
+<section id="timeline">
+  <div class="rail">
+    <div class="moment">
+      <h3>The call that lost track of time</h3>
+      <p>That night on Instagram, hours in, and somehow I couldn't tell you where most of it went. Some things you don't remember in detail &mdash; you just remember you didn't want it to end.</p>
+    </div>
+    <div class="moment">
+      <h3>"Can we spend winter together?"</h3>
+      <p>A TikTok DM, out of nowhere, earlier this year. I said yes before I'd even thought about it. Life had other plans for both of us &mdash; but I never forgot you asked.</p>
+    </div>
+    <div class="moment">
+      <h3>Blaugrana and the GOAT that isn't up for debate</h3>
+      <p>We're both Barça, and we both know who the greatest to ever do it is. And Lewandowski had no business joining Barça mid-crisis, of all times &mdash; and ended up being exactly what the club needed. That's you, showing up in my life when you didn't have to, and making it better anyway.</p>
+    </div>
+    <div class="moment">
+      <h3>Subs over dubs</h3>
+      <p>Your K-dramas, my anime &mdash; different worlds, same rule: always in sub. It's a small thing. It's still ours.</p>
+    </div>
+    <div class="moment">
+      <h3>Two people who need their glasses</h3>
+      <p>Small detail. Still counts.</p>
+    </div>
+    <div class="moment">
+      <h3>When the lights go out on your side</h3>
+      <p>I know your area can lose power for hours, sometimes days, and there's not much I can do about it from here. It leaves a strange kind of quiet on my end too.</p>
+    </div>
+    <div class="moment">
+      <h3>Every day, somehow</h3>
+      <p>TikTok used to be the whole conversation. These days it's mostly WhatsApp, every single day, for close to a year now &mdash; whoever texts first, streaks and all. That's not nothing.</p>
+    </div>
+  </div>
+</section>
+
+<section id="humanity">
+  <p class="switch-line serif">In Mystic Falls, you can switch your humanity off.<br><br>
+  I've tried, not gonna lie &mdash; the timing's been off, the cities haven't matched up, life's been a lot for both of us. <em>It doesn't switch off.</em> Not for you.</p>
+</section>
+
+<section id="question">
+  <svg class="mascot" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" aria-label="A cute pink vampire-werewolf bunny">
+    <!-- tail -->
+    <circle cx="152" cy="218" r="14" fill="#FFD5E8"/>
+    <!-- body -->
+    <ellipse cx="100" cy="205" rx="52" ry="40" fill="#FF6FA0"/>
+    <ellipse cx="100" cy="212" rx="30" ry="22" fill="#FFD5E8" opacity="0.8"/>
+    <!-- arms -->
+    <ellipse cx="55" cy="200" rx="12" ry="18" fill="#FF6FA0"/>
+    <ellipse cx="145" cy="200" rx="12" ry="18" fill="#FF6FA0"/>
+    <!-- feet -->
+    <ellipse cx="72" cy="240" rx="16" ry="10" fill="#FF6FA0"/>
+    <ellipse cx="128" cy="240" rx="16" ry="10" fill="#FF6FA0"/>
+    <ellipse cx="72" cy="242" rx="8" ry="5" fill="#FFD5E8"/>
+    <ellipse cx="128" cy="242" rx="8" ry="5" fill="#FFD5E8"/>
+    <!-- ears: soft, rounded, floppy-cute rather than pointed -->
+    <path d="M 62 95 C 40 60, 38 20, 55 6 C 68 -4, 78 10, 74 30 C 70 55, 72 78, 78 92 Z" fill="#FF6FA0"/>
+    <path d="M 138 95 C 160 60, 162 20, 145 6 C 132 -4, 122 10, 126 30 C 130 55, 128 78, 122 92 Z" fill="#FF6FA0"/>
+    <path d="M 63 88 C 50 60, 50 32, 60 18 C 68 30, 68 60, 70 84 Z" fill="#FFD5E8"/>
+    <path d="M 137 88 C 150 60, 150 32, 140 18 C 132 30, 132 60, 130 84 Z" fill="#FFD5E8"/>
+    <!-- head -->
+    <circle cx="100" cy="135" r="60" fill="#FF6FA0"/>
+    <!-- cheeks -->
+    <circle cx="60" cy="148" r="10" fill="#FFA8CC" opacity="0.8"/>
+    <circle cx="140" cy="148" r="10" fill="#FFA8CC" opacity="0.8"/>
+    <!-- big cute eyes -->
+    <circle cx="80" cy="132" r="10" fill="#2A0E1E"/>
+    <circle cx="120" cy="132" r="10" fill="#2A0E1E"/>
+    <circle cx="83" cy="128" r="3" fill="#FFFFFF"/>
+    <circle cx="123" cy="128" r="3" fill="#FFFFFF"/>
+    <!-- round glasses -->
+    <circle cx="80" cy="132" r="17" fill="none" stroke="#2A0E1E" stroke-width="2.5"/>
+    <circle cx="120" cy="132" r="17" fill="none" stroke="#2A0E1E" stroke-width="2.5"/>
+    <line x1="97" y1="132" x2="103" y2="132" stroke="#2A0E1E" stroke-width="2.5"/>
+    <!-- nose -->
+    <ellipse cx="100" cy="150" rx="4" ry="3" fill="#2A0E1E"/>
+    <!-- tiny smile with two small fangs -->
+    <path d="M 88 158 Q 100 166 112 158" stroke="#2A0E1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 92 159 L 94 168 L 96 159 Z" fill="#FFF6FA"/>
+    <path d="M 104 159 L 106 168 L 108 159 Z" fill="#FFF6FA"/>
+  </svg>
+
+  <h2>Will you be my girlfriend?</h2>
+
+  <div class="choices" id="choices">
+    <button class="choice yes" id="btn-yes">Yes</button>
+    <button class="choice" id="btn-no">No</button>
+  </div>
+
+  <div class="result" id="result" style="display:none;"></div>
+
+  <p class="footer-note">for Sisipho, from someone whose humanity switch is stuck on you</p>
+</section>
+
+<script>
+  // Scroll reveal for timeline moments
+  const moments = document.querySelectorAll('.moment');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.25 });
+  moments.forEach(m => io.observe(m));
+
+  // Lock the answer server-side so it can't be flipped back and forth,
+  // and so you get pinged the moment she answers. Falls back to this
+  // browser's own storage if /api/respond isn't reachable (e.g. previewing
+  // the file locally before it's deployed).
+  const KEY = 'sisipho_answer';
+  const choices = document.getElementById('choices');
+  const result = document.getElementById('result');
+
+  function showResult(answer){
+    choices.style.display = 'none';
+    result.style.display = 'block';
+    result.textContent = answer === 'yes'
+      ? "That's all I needed to hear."
+      : "Thank you for being honest with me. That matters more than a yes would have.";
+  }
+
+  async function checkExisting(){
+    try{
+      const r = await fetch('/api/respond');
+      if(!r.ok) throw new Error('no api');
+      const data = await r.json();
+      if(data.answered){ showResult(data.answer); return true; }
+    }catch(e){
+      const saved = localStorage.getItem(KEY);
+      if(saved){ showResult(saved); return true; }
+    }
+    return false;
+  }
+
+  async function submitAnswer(answer){
+    try{
+      const r = await fetch('/api/respond', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ answer })
+      });
+      if(!r.ok) throw new Error('no api');
+      const data = await r.json();
+      localStorage.setItem(KEY, data.answer);
+      showResult(data.answer);
+    }catch(e){
+      localStorage.setItem(KEY, answer);
+      showResult(answer);
+    }
+  }
+
+  checkExisting();
+
+  document.getElementById('btn-yes').addEventListener('click', () => {
+    if (!confirm("Just to be sure — yes?")) return;
+    submitAnswer('yes');
+  });
+
+  // A little playful resistance on "No" — it dodges the first few times,
+  // then settles so it's always genuinely possible to pick it.
+  const noBtn = document.getElementById('btn-no');
+  let dodges = 0;
+  const MAX_DODGES = 3;
+  noBtn.addEventListener('mouseenter', () => {
+    if (dodges >= MAX_DODGES) return;
+    dodges++;
+    const x = (Math.random() * 100 - 50).toFixed(0);
+    const y = (Math.random() * 30 - 15).toFixed(0);
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+  noBtn.addEventListener('click', () => {
+    if (!confirm("Just to be sure — this is a no?")) return;
+    submitAnswer('no');
+  });
+</script>
+</body>
+</html>
